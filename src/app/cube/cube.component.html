@@ -1,0 +1,23 @@
+<div class="Cube-container">
+  <div class="Cube-cube"
+       [ngStyle]="cubeStyle">
+    <div class="Cube-backFace">
+      <ng-content select="[cubeBackFace]"></ng-content>
+    </div>
+    <div class="Cube-rightFace">
+      <ng-content select="[cubeRightFace]"></ng-content>
+    </div>
+    <div class="Cube-leftFace">
+      <ng-content select="[cubeLeftFace]"></ng-content>
+    </div>
+    <div class="Cube-topFace">
+      <ng-content select="[cubeTopFace]"></ng-content>
+    </div>
+    <div class="Cube-bottomFace">
+      <ng-content select="[cubeBottomFace]"></ng-content>
+    </div>
+    <div class="Cube-frontFace">
+      <ng-content select="[cubeFrontFace]"></ng-content>
+    </div>
+  </div>
+</div>

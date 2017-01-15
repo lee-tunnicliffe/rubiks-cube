@@ -1,0 +1,54 @@
+.Cube {
+  $Cube-defaultSize: 200px;
+
+  &-container {
+    perspective: $Cube-defaultSize * 4;
+    perspective-origin: 50% ($Cube-defaultSize / 2);
+  }
+
+  &-cube {
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform linear 1s;
+    width: $Cube-defaultSize;
+  }
+
+  &-backFace,
+  &-rightFace,
+  &-leftFace,
+  &-topFace,
+  &-bottomFace,
+  &-frontFace {
+    height: $Cube-defaultSize;
+    position: absolute;
+    width: $Cube-defaultSize;
+  }
+
+  &-backFace {
+    transform: translateZ(-$Cube-defaultSize / 2) rotateY(180deg);
+  }
+
+  &-rightFace {
+    transform: rotateY(-270deg) translateX($Cube-defaultSize / 2);
+    transform-origin: top right;
+  }
+
+  &-leftFace {
+    transform: rotateY(270deg) translateX(-$Cube-defaultSize / 2);
+    transform-origin: center left;
+  }
+
+  &-topFace {
+    transform: rotateX(-90deg) translateY(-$Cube-defaultSize / 2);
+    transform-origin: top center;
+  }
+
+  &-bottomFace {
+    transform: rotateX(90deg) translateY($Cube-defaultSize / 2);
+    transform-origin: bottom center;
+  }
+
+  &-frontFace {
+    transform: translateZ($Cube-defaultSize / 2);
+  }
+}

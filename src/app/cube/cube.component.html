@@ -1,6 +1,8 @@
 <div class="Cube-container">
   <div class="Cube-cube"
-       [ngStyle]="cubeStyle">
+       [@rotate]="rotateState"
+       (@rotate.start)="rotateStart($event)"
+       (@rotate.done)="rotateDone($event)">
     <div class="Cube-backFace">
       <ng-content select="[cubeBackFace]"></ng-content>
     </div>

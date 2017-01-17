@@ -6,32 +6,27 @@ import { Component, HostListener, style, state, trigger, animate, transition } f
   styleUrls: ['./cube.component.scss'],
   animations: [
     trigger('rotate', [
+      state('noRotation', style({})),
       state('y-90', style({
         transform: 'rotateY(-90deg)'
-      })),
-      state('y0', style({
-        transform: 'rotateY(0deg)'
       })),
       state('y90', style({
         transform: 'rotateY(90deg)'
       })),
-      state('y180', style({
-        transform: 'rotateY(180deg)'
+      state('x-90', style({
+        transform: 'rotateX(-90deg)'
       })),
-      state('y270', style({
-        transform: 'rotateY(270deg)'
+      state('x90', style({
+        transform: 'rotateX(90deg)'
       })),
-      state('y360', style({
-        transform: 'rotateY(360deg)'
-      })),
-      transition('y360 => y0', animate('0s')),
-      transition('y-90 => y270', animate('0s')),
+      transition('* => noRotation', animate('0s')),
       transition('* => *', animate('1s'))
     ])
   ]
 })
 export class CubeComponent {
 
+  private xRotation: number = 0;
   private yRotation: number = 0;
   private rotateState: string;
   private rotateInProgress: boolean = false;
@@ -49,11 +44,31 @@ export class CubeComponent {
       this.rotateRight();
     } else if (event.key === 'ArrowLeft') {
       this.rotateLeft();
+    } else if (event.key === 'ArrowUp') {
+      this.rotateUp();
+    } else if (event.key === 'ArrowDown') {
+      this.rotateDown();
     }
   }
 
   private updateRotateState() {
-    this.rotateState = 'y' + this.yRotation;
+    if (this.xRotation !== 0) {
+      this.rotateState = 'x' + this.xRotation;
+    } else if (this.yRotation !== 0) {
+      this.rotateState = 'y' + this.yRotation;
+    } else {
+      this.rotateState = 'noRotation';
+    }
+  }
+
+  private rotateUp() {
+    this.xRotation -= 90;
+    this.updateRotateState();
+  }
+
+  private rotateDown() {
+    this.xRotation += 90;
+    this.updateRotateState();
   }
 
   private rotateRight() {
@@ -70,14 +85,10 @@ export class CubeComponent {
     this.rotateInProgress = true;
   }
 
-  protected rotateDone($event) {
-    if ($event.toState === 'y360') {
-      this.yRotation = 0;
-      this.updateRotateState();
-    } else if ($event.toState === 'y-90') {
-      this.yRotation = 270;
-      this.updateRotateState();
-    }
+  protected rotateDone() {
+    this.xRotation = 0;
+    this.yRotation = 0;
+    this.updateRotateState();
     this.rotateInProgress = false;
   }
 }

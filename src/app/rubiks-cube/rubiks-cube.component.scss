@@ -1,0 +1,53 @@
+$color-yellow: #ff0;
+$color-blue: #00f;
+$color-red: #f00;
+$color-green: #0f0;
+$color-orange: #ffa500;
+$color-white: #fff;
+$color-black: #000;
+
+$rubiks-cube-size: 200px;
+
+.RubiksCube {
+  &-face {
+    height: 100%;
+    width: 100%;
+  }
+
+  &-yellowPiece,
+  &-bluePiece,
+  &-redPiece,
+  &-greenPiece,
+  &-orangePiece,
+  &-whitePiece {
+    border: 1px solid $color-black;
+    box-sizing: border-box;
+    float: left;
+    height: percentage(1 / 3);
+    width: percentage(1 / 3);
+  }
+
+  &-yellowPiece {
+    background-color: $color-yellow;
+  }
+
+  &-bluePiece {
+    background-color: $color-blue;
+  }
+
+  &-redPiece {
+    background-color: $color-red;
+  }
+
+  &-greenPiece {
+    background-color: $color-green;
+  }
+
+  &-orangePiece {
+    background-color: $color-orange;
+  }
+
+  &-whitePiece {
+    background-color: $color-white;
+  }
+}

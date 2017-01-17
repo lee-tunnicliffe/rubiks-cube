@@ -5,11 +5,13 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { CubeComponent } from './cube/cube.component';
+import { RubiksCubeComponent } from './rubiks-cube/rubiks-cube.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CubeComponent
+    CubeComponent,
+    RubiksCubeComponent
   ],
   imports: [
     BrowserModule,

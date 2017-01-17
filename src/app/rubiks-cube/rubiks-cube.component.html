@@ -1,0 +1,28 @@
+<div class="RubiksCube-container">
+  <cube>
+    <div class="RubiksCube-face" cubeBackFace>
+      <div *ngFor="let piece of rubiksCube.getGreenFace()"
+           [ngClass]="getClassesForPiece(piece)"></div>
+    </div>
+    <div class="RubiksCube-face" cubeRightFace>
+      <div *ngFor="let piece of rubiksCube.getRedFace()"
+           [ngClass]="getClassesForPiece(piece)"></div>
+    </div>
+    <div class="RubiksCube-face" cubeLeftFace>
+      <div *ngFor="let piece of rubiksCube.getOrangeFace()"
+           [ngClass]="getClassesForPiece(piece)"></div>
+    </div>
+    <div class="RubiksCube-face" cubeTopFace>
+      <div *ngFor="let piece of rubiksCube.getYellowFace()"
+           [ngClass]="getClassesForPiece(piece)"></div>
+    </div>
+    <div class="RubiksCube-face" cubeBottomFace>
+      <div *ngFor="let piece of rubiksCube.getWhiteFace()"
+           [ngClass]="getClassesForPiece(piece)"></div>
+    </div>
+    <div class="RubiksCube-face" cubeFrontFace>
+      <div *ngFor="let piece of rubiksCube.getBlueFace()"
+           [ngClass]="getClassesForPiece(piece)"></div>
+    </div>
+  </cube>
+</div>

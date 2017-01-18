@@ -1,4 +1,4 @@
-import { Component, HostListener, style, state, trigger, animate, transition } from '@angular/core';
+import { Component, HostListener, style, state, trigger, animate, transition, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'cube',
@@ -25,6 +25,9 @@ import { Component, HostListener, style, state, trigger, animate, transition } f
   ]
 })
 export class CubeComponent {
+
+  @Output('cubeRotated')
+  cubeRotated = new EventEmitter<Array<number>>();
 
   private xRotation: number = 0;
   private yRotation: number = 0;
@@ -85,10 +88,12 @@ export class CubeComponent {
     this.rotateInProgress = true;
   }
 
-  protected rotateDone() {
-    this.xRotation = 0;
-    this.yRotation = 0;
-    this.updateRotateState();
+  protected rotateDone($event) {
+    if ($event.toState !== 'noRotation') {
+      this.cubeRotated.next([this.xRotation / 90, this.yRotation / 90]);
+      this.xRotation = this.yRotation = 0;
+      this.updateRotateState();
+    }
     this.rotateInProgress = false;
   }
 }

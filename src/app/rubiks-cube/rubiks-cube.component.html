@@ -1,5 +1,5 @@
 <div class="RubiksCube-container">
-  <cube>
+  <cube (cubeRotated)="cubeRotated($event)">
     <div class="RubiksCube-face" cubeBackFace>
       <div *ngFor="let piece of rubiksCube.getGreenFace()"
            [ngClass]="getClassesForPiece(piece)"></div>

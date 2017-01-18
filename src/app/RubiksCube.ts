@@ -92,4 +92,40 @@ export class RubiksCube {
   public getWhiteFace() : Array<Color> {
     return this.whiteFace;
   }
+
+  public rotateUp() : void {
+    let oldBlueFace = this.blueFace;
+
+    this.blueFace = this.yellowFace;
+    this.yellowFace = this.greenFace;
+    this.greenFace = this.whiteFace;
+    this.whiteFace = oldBlueFace;
+  }
+
+  public rotateDown() : void {
+    let oldBlueFace = this.blueFace;
+
+    this.blueFace = this.whiteFace;
+    this.whiteFace = this.greenFace;
+    this.greenFace = this.yellowFace;
+    this.yellowFace = oldBlueFace;
+  }
+
+  public rotateRight() : void {
+    let oldBlueFace = this.blueFace;
+
+    this.blueFace = this.redFace;
+    this.redFace = this.greenFace;
+    this.greenFace = this.orangeFace;
+    this.orangeFace = oldBlueFace;
+  }
+
+  public rotateLeft() : void {
+    let oldBlueFace = this.blueFace;
+
+    this.blueFace = this.orangeFace;
+    this.orangeFace = this.greenFace;
+    this.greenFace = this.redFace;
+    this.redFace = oldBlueFace;
+  }
 }

@@ -25,7 +25,7 @@ export class RubiksCubeComponent {
     }
   }
 
-  public getClassesForPiece(piece: Color) {
+  protected getClassesForPiece(piece: Color) {
     if (piece === Color.YELLOW) {
       return 'RubiksCube-yellowPiece';
     } else if (piece === Color.BLUE) {
@@ -38,6 +38,18 @@ export class RubiksCubeComponent {
       return 'RubiksCube-orangePiece';
     } else if (piece === Color.WHITE) {
       return 'RubiksCube-whitePiece';
+    }
+  }
+
+  protected cubeRotated(rotationMatrix: Array<number>) {
+    if (rotationMatrix[0] === -1) {
+      this.rubiksCube.rotateUp();
+    } else if (rotationMatrix[0] === 1) {
+      this.rubiksCube.rotateDown();
+    } else if (rotationMatrix[1] === -1) {
+      this.rubiksCube.rotateRight();
+    } else if (rotationMatrix[1] === 1) {
+      this.rubiksCube.rotateLeft();
     }
   }
 }

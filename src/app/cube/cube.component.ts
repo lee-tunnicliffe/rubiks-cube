@@ -8,19 +8,50 @@ import { Component, HostListener, style, state, trigger, animate, transition, Ou
     trigger('rotate', [
       state('noRotation', style({})),
       state('y-90', style({
-        transform: 'rotateY(-90deg)'
+        transform: '*'
       })),
       state('y90', style({
-        transform: 'rotateY(90deg)'
+        transform: '*'
       })),
       state('x-90', style({
-        transform: 'rotateX(-90deg)'
+        transform: '*'
       })),
       state('x90', style({
-        transform: 'rotateX(90deg)'
+        transform: '*'
       })),
-      transition('* => noRotation', animate('0s')),
-      transition('* => *', animate('1s'))
+      transition('* => y-90', [
+        style({
+          transform: '*'
+        }),
+        animate(500, style({
+          transform: 'rotateY(-90deg)'
+        }))
+      ]),
+      transition('* => y90', [
+        style({
+          transform: '*'
+        }),
+        animate(500, style({
+          transform: 'rotateY(90deg)'
+        }))
+      ]),
+      transition('* => x-90', [
+        style({
+          transform: '*'
+        }),
+        animate(500, style({
+          transform: 'rotateX(-90deg)'
+        }))
+      ]),
+      transition('* => x90', [
+        style({
+          transform: '*'
+        }),
+        animate(500, style({
+          transform: 'rotateX(90deg)'
+        }))
+      ]),
+      transition('* => noRotation', animate('0s'))
     ])
   ]
 })
